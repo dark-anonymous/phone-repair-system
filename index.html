@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Repair System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-tools"></i> Phone Repair System</h1>
+    </header>
+    <nav>
+        <a href="#" onclick="showPage('repair-form')"><i class="fas fa-plus-circle"></i> Add Repair</a>
+        <a href="#" onclick="showPage('repair-history')"><i class="fas fa-history"></i> Repair History</a>
+    </nav>
+    <div class="container">
+        <!-- Repair Form Page -->
+        <div id="repair-form" class="page">
+            <h2><i class="fas fa-wrench"></i> Add Repair</h2>
+            <form onsubmit="handleAddRepair(event)">
+                <div class="form-group">
+                    <label for="customer-name">Customer Name:</label>
+                    <input type="text" id="customer-name" name="customer-name" placeholder="Enter customer name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-contact">Customer Contact:</label>
+                    <input type="text" id="customer-contact" name="customer-contact" placeholder="Enter customer contact" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone-model">Phone Model:</label>
+                    <input type="text" id="phone-model" name="phone-model" placeholder="Enter phone model" required>
+                </div>
+                <div class="form-group">
+                    <label for="repair-type">Repair Type:</label>
+                    <select id="repair-type" name="repair-type" required>
+                        <option value="Screen Replacement">Screen Replacement</option>
+                        <option value="Battery Replacement">Battery Replacement</option>
+                        <option value="Motherboard Repair">Motherboard Repair</option>
+                        <option value="Software Update">Software Update</option>
+                        <option value="Camera Repair">Camera Repair</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="repair-price">Repair Price (RM):</label>
+                    <input type="number" id="repair-price" name="repair-price" placeholder="Enter repair price" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Payment By:</label>
+                    <select id="payment-method" name="payment-method" required>
+                        <option value="Cash">Cash</option>
+                        <option value="QR Payment">QR Payment</option>
+                        <option value="Card">Card</option>
+                        <option value="SPayLater">SPayLater</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Repair</button>
+            </form>
+        </div>
+
+        <!-- Repair History Page -->
+        <div id="repair-history" class="page" style="display:none;">
+            <h2><i class="fas fa-list-alt"></i> Repair History</h2>
+            <table id="repair-history-table">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Phone Model</th>
+                        <th>Repair Type</th>
+                        <th>Price (RM)</th>
+                        <th>Payment By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div id="total-earnings">
+                <h3>Total Earnings: RM <span id="earnings">0</span></h3>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
